@@ -27,29 +27,11 @@ class Genre(models.Model):
         verbose_name = "Genre"
         verbose_name_plural = "Genres"
 
-
-class Album(models.Model):
-
-    title = models.CharField("Album title", max_length=100)
-    description = models.TextField("Album description", default="no description")
-    year = models.IntegerField("Album release year")
-
-    genres = models.ManyToManyField(Genre, verbose_name="genres")
-    artists = models.ManyToManyField(Artist, verbose_name="artists")
-
-    def __str__(self):
-        return "{} ({})".format(self.title, self.year)
-
-    class Meta:
-        verbose_name = "Album"
-        verbose_name_plural = "Albums"
-
-
 class Song(models.Model):
 
     title = models.CharField("Song title", max_length=100) 
-    album = models.ForeignKey(Album, verbose_name="album", on_delete=models.SET_NULL, null=True)
-    artists = models.ManyToManyField(Artist, verbose_name="artists")
+    # album = models.ForeignKey(Album, verbose_name="album", on_delete=models.SET_NULL, null=True)
+    artist = models.ForeignKey(Artist, verbose_name="artist", on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.title
@@ -57,3 +39,39 @@ class Song(models.Model):
     class Meta:
         verbose_name = "Song"
         verbose_name_plural = "Songs"
+
+class Playlist(models.Model):
+
+    title = models.CharField("Playlist title", max_length=100)
+    description = models.TextField("Playlist description", default="no description")
+    songs = models.ManyToManyField(Song, verbose_name='songs')
+
+    year = models.IntegerField("Album release year", default=2021)
+    genre = models.ForeignKey(Genre, verbose_name="genre", on_delete=models.SET_NULL, null=True)
+
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Playlist"
+        verbose_name_plural = "Playlists"
+
+
+# class Album(models.Model):
+
+#     title = models.CharField("Album title", max_length=100)
+#     description = models.TextField("Album description", default="no description")
+#     year = models.IntegerField("Album release year")
+
+#     genre = models.ForeignKey(Genre, verbose_name="genre", on_delete=models.SET_NULL, null=True)
+#     artist = models.ForeignKey(Artist, verbose_name="artist", on_delete=models.SET_NULL, null=True)
+
+#     def __str__(self):
+#         return "{} ({})".format(self.title, self.year)
+
+#     class Meta:
+#         verbose_name = "Album"
+#         verbose_name_plural = "Albums"
+
+
