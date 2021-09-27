@@ -46,7 +46,7 @@ class Playlist(models.Model):
     description = models.TextField("Playlist description", default="no description")
     songs = models.ManyToManyField(Song, verbose_name='songs')
 
-    year = models.IntegerField("Album release year", default=2021)
+    year = models.IntegerField("Playlist creation year", default=2021)
     genre = models.ForeignKey(Genre, verbose_name="genre", on_delete=models.SET_NULL, null=True)
 
 
