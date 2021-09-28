@@ -10,10 +10,11 @@ class ArtistSerializer(serializers.HyperlinkedModelSerializer):
 
 class SongSerializer(serializers.HyperlinkedModelSerializer):
 
-    author = ArtistSerializer(source='artist')
+    # author = ArtistSerializer(source='artist')
+    artist = serializers.StringRelatedField()
     class Meta:
         model = Song
-        fields = ('url', 'title', "author")
+        fields = '__all__'
 
 
 class GenreSerializer(serializers.HyperlinkedModelSerializer):
@@ -24,6 +25,9 @@ class GenreSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class PlaylistSerializer(serializers.HyperlinkedModelSerializer):
+
+    genre = serializers.StringRelatedField()
+    songs = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = Playlist

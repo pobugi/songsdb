@@ -7,7 +7,6 @@ class SongView(viewsets.ModelViewSet):
 
     # queryset = Song.objects.all()
     queryset = Song.objects.select_related("artist").all()
-    # queryset = db_queries.song_list_select_related
     serializer_class = SongSerializer
 
 
