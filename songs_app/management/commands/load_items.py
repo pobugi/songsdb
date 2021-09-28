@@ -5,11 +5,11 @@ from songs_app.models import Genre, Song, Playlist, Artist
 
 
 GENRES = (
-    "Rock", "Pop", "Jazz", "Indie", "Britpop", "Lo-Fi", "Metal"
+    "Rock", "Pop", "Jazz", "Indie", "Britpop", "Lo-Fi", "Blues"
 )
 
 ARTISTS = (
-    "Nirvana", "Jamiroquai", "Bill Withers", "No Doubt", "Nick Cave"
+    "Jimi Hendrix", "Jamiroquai", "Bill Withers", "No Doubt", "Nick Cave"
 )
 
 YEARS = [random.randint(1950, 2021) for i in range(30)]
@@ -41,10 +41,12 @@ class Command(BaseCommand):
         Song.objects.bulk_create(songs)
 
 
-        songs = list(set(Song.objects.all()))
-        for i in range(10):
+        songs = list(Song.objects.all())
+        random.shuffle(songs)
+        for i in range(4):
             try:
-                temp_songs = [songs.pop(0) for i in range(10)]
+                print(songs)
+                temp_songs = [songs.pop(0) for i in range(7)]
                 genres = Genre.objects.all()
                 playlist = Playlist.objects.create(
                     title="Playlist #{}".format(i+1),

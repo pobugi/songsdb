@@ -1,7 +1,6 @@
 from rest_framework import viewsets
 from .models import Song, Artist, Genre, Playlist
 from .serializers import SongSerializer, ArtistSerializer, GenreSerializer, PlaylistSerializer
-from . import db_queries
 
 class SongView(viewsets.ModelViewSet):
 

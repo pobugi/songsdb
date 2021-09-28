@@ -34,7 +34,7 @@ class Song(models.Model):
     artist = models.ForeignKey(Artist, verbose_name="artist", on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
-        return self.title
+        return '{} ({})'.format(self.title, self.artist.name)
 
     class Meta:
         verbose_name = "Song"
