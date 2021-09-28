@@ -1,7 +1,20 @@
 # songsdb
 Django learning project (lazy queries)
 
-query examples:
+Для запуска приложения:
+
+1. Клонируйте репозиторий 
+2. Перейдите в соответствующию директорию 
+3. Создайте виртуальное окружение 
+4. Установите зависимости: 
+    Linux: pip3 install -r requirements.txt 
+    Windows: pip install -r requirements.txt 
+5. Выполните миграции: python/python3 manage.py migrate
+6. Создайте администратора: python/python3 manage.py createsuperuser
+7. Для заполнения БД тестовыми данными: python3 manage.py load_items
+8. Запустите приложение: python/python3 manage.py runserver
+
+Примеры lazy query:
 
     Song.objects
     Song.objects.all()
