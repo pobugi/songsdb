@@ -160,3 +160,6 @@ def show_toolbar(request):
 DEBUG_TOOLBAR_CONFIG = {
     "SHOW_TOOLBAR_CALLBACK" : show_toolbar,
 }
+
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
